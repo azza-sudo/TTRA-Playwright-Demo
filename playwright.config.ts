@@ -24,12 +24,15 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+ timeout: 60000,
   use: {
-    baseURL: "https://platform.staging.ttraa.com/login", 
+    baseURL: "https://platform.staging.ttraa.com", 
     headless: true,
     screenshot: "only-on-failure",
     video: "retain-on-failure",
-    trace: "on-first-retry"
+    trace: "on-first-retry",
+    actionTimeout: 10000,
+    navigationTimeout: 60000
   },
 
   /* Configure projects for major browsers */

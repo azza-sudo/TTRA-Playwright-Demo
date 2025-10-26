@@ -14,20 +14,25 @@ export class SignUpPage extends BasePage {
   }
 
   async register(name: string, email: string, password: string) {
-    await this.page.fill(this.nameInput, name);
-    await this.page.fill(this.emailInput, email);
-    await this.page.fill(this.passwordInput, password);
+    await this.fillName(name);
+    await this.fillEmail(email);
+    await this.fillPassword(password);
     await this.page.click(this.continueButton);
   }
 
   async assertRegistrationSuccess() {
-    await expect(this.page.getByRole('heading', { name: 'شكرا على التسجيل!' }))
-      .toBeVisible()  }
+    await this.page.waitForLoadState('networkidle');
+    await expect(
+      this.page.getByRole('heading', { name: /شكرا على التسجيل/ })
+    ).toBeVisible({ timeout: 60000 });
+  }
 
   async clickSignUpButton() {
+    this.waitForElement(this.continueButton);
     await this.page.click(this.continueButton);
   }
   async clickFinishButton() {
+    this.waitForElement(this.finishButton);
     await this.page.click(this.finishButton);
   }
   async assertValidationError(message: string) {
@@ -37,12 +42,15 @@ export class SignUpPage extends BasePage {
   }
 
   async fillName(name: string) {
+    this.waitForElement(this.nameInput);
     await this.page.fill(this.nameInput, name);
   }
   async fillEmail(email: string) {
+    this.waitForElement(this.emailInput);
     await this.page.fill(this.emailInput, email);
   }
   async fillPassword(password: string) {
+    this.waitForElement(this.passwordInput);
     await this.page.fill(this.passwordInput, password);
   }
   async togglePasswordVisibility() {
