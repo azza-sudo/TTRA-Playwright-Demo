@@ -19,8 +19,13 @@ export class SignInPage extends BasePage {
     await this.page.fill(this.passwordInput, password);
     await this.page.click(this.signInButton);
   }
+  async logout() {
+    await this.page.click('[data-testid="profile-menu"]');
+    await this.page.click('[data-testid="logout-button"]');
 
- async fillEmail(email: string) {
+  }
+
+  async fillEmail(email: string) {
     await this.page.fill(this.emailInput, email);
   }
 
@@ -33,7 +38,7 @@ export class SignInPage extends BasePage {
   }
 
 
-   async assertPageIsVisible( title: string) {
+  async assertPageIsVisible(title: string) {
     await expect(this.page.locator(this.pageHeader)).toHaveText(title);
   }
   async assertLoginError(expectedMessage: string) {
@@ -42,6 +47,6 @@ export class SignInPage extends BasePage {
     expect(alertText).toContain(expectedMessage);
   }
   async assertFieldValidation(message: string) {
-      await expect(this.page.locator(this.fieldError)).toContainText(message);
-    }
+    await expect(this.page.locator(this.fieldError)).toContainText(message);
+  }
 }

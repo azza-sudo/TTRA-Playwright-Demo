@@ -23,22 +23,40 @@ test.describe("Sign In Tests", () => {
     await signIn.clickSignIn();
     await signIn.assertFieldValidation("البريد الإلكتروني وكلمة المرور مطلوبان");
   });
-  //bug
-  //   test("User cannot sign in with only email filled", async ({ page }) => {
-  //     await signIn.fillEmail(ENV.validUser.email);
-  //     await signIn.clickSignIn();
-  //     await signIn.assertFieldValidation("كلمة المرور مطلوبة");
-  //   });
 
   //bug
-  //   test("User cannot sign in with only password filled", async ({ page }) => {
-  //     await signIn.fillPassword(ENV.validUser.password);
-  //     await signIn.clickSignIn();
-  //     await signIn.assertFieldValidation("البريد الإلكتروني مطلوب");
-  //   });
+    test("User cannot sign in with only email filled", async ({ page }) => {
+      await signIn.fillEmail(ENV.validUser.email);
+      await signIn.clickSignIn();
+      await signIn.assertFieldValidation("كلمة المرور مطلوبة");
+    });
+
+  //bug
+    test("User cannot sign in with only password filled", async ({ page }) => {
+      await signIn.fillPassword(ENV.validUser.password);
+      await signIn.clickSignIn();
+      await signIn.assertFieldValidation("البريد الإلكتروني مطلوب");
+    });
 
   test("User cannot sign in with invalid email format", async ({ page }) => {
     await signIn.login("invalidemail", ENV.validUser.password);
     await signIn.assertFieldValidation("الرجاء إدخال بريد إلكتروني صالح");
+  });
+//logout
+  test("User can log out successfully", async ({ page }) => {
+    await signIn.login(ENV.validUser.email, ENV.validUser.password);
+    await signIn.assertPageIsVisible("الحملات");
+    await signIn.logout();
+    await expect(page).toHaveURL(/\/login/);
+    await expect(page.locator(signIn.signInButton)).toBeVisible();
+  });
+//logout
+  test("User cannot access dashboard after logout", async ({ page }) => {
+    await signIn.login(ENV.validUser.email, ENV.validUser.password);
+    await signIn.assertPageIsVisible("الحملات");
+    await signIn.logout();
+    await page.goto(`${ENV.baseUrl}/dashboard`);
+    await expect(page).toHaveURL(/\/login/);
+    await expect(page.locator(signIn.signInButton)).toBeVisible();
   });
 });
