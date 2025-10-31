@@ -22,12 +22,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright Tests
+      - name: Run Playwright Tests and Save JSON
         run: |
-          npx playwright test --reporter="json=playwright-report/sample_results.json,html"
-
-      - name: Rename JSON Report
-        run: mv playwright-report/test-results.json playwright-report/sample_results.json
+          mkdir -p playwright-report
+          npx playwright test --reporter=html,json --output=playwright-report > playwright-report/sample_results.json || true
 
       - name: Upload Playwright Results
         uses: actions/upload-artifact@v4
