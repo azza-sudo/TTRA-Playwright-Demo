@@ -96,7 +96,7 @@ jobs:
       - name: Run TestInsight-Agent on Playwright JSON
         working-directory: TestInsight-Agent
         env:
-          REPORT_PATH: ${{ github.workspace }}/reports/sample_results.json
+          REPORT_PATH: ${{ github.workspace }}/artifacts/reports/sample_results.json
         run: |
           set -euxo pipefail
           echo "Using report: $REPORT_PATH"
