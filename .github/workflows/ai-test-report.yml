@@ -28,6 +28,7 @@ jobs:
         run: npx playwright test --list || true
 
       - name: Run Playwright Tests (HTML + JSON + LOG)
+        shell: bash
         run: |
           set -euxo pipefail
           REPORT_DIR="${{ runner.temp }}/playwright-report"
