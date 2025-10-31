@@ -115,6 +115,8 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          TESTINSIGHT_DISABLE_AI: 1  # keep CI green even if OpenAI quota is out
+
         run: |
           echo "Running TestInsight AI Agent..."
           python main.py sample_results.json
