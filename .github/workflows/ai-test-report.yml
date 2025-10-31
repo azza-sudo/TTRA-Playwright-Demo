@@ -26,29 +26,37 @@ jobs:
 
       - name: Run Playwright Tests (HTML + JSON)
         run: |
-          mkdir -p playwright-report
+          set -e
+          REPORT_DIR="${{ runner.temp }}/playwright-report"
+          mkdir -p "$REPORT_DIR"
+
           npx playwright --version || true
-          # JSON reporter prints to stdout, redirect to file. Allow failure so artifacts still upload.
-          npx playwright test --reporter=html,json > playwright-report/sample_results.json || true
+
+          # HTML report goes to a temp dir; JSON reporter prints to stdout -> file.
+          npx playwright test --reporter=html="$REPORT_DIR",json > "$REPORT_DIR/sample_results.json" || true
 
           # Safety net if JSON missing/empty
-          if [ ! -s playwright-report/sample_results.json ]; then
-            echo '{"status":"no-tests-or-failure","suites":[]}' > playwright-report/sample_results.json
+          if [ ! -s "$REPORT_DIR/sample_results.json" ]; then
+            echo '{"status":"no-tests-or-failure","suites":[]}' > "$REPORT_DIR/sample_results.json"
           fi
-        
+
+          # Prepare repo folder for the committed JSON
+          mkdir -p reports
+          cp -f "$REPORT_DIR/sample_results.json" reports/sample_results.json
+
       - name: Upload Playwright JSON (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
-          path: playwright-report/sample_results.json
+          path: reports/sample_results.json
 
       - name: Upload Playwright HTML (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: html-report
-          path: playwright-report/
+          path: ${{ runner.temp }}/playwright-report
 
       # --- Commit JSON back to the repo (only on branch runs, not PRs) ---
       - name: Commit JSON report to repo
@@ -56,18 +64,16 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           set -e
-          mkdir -p reports
-          cp -f playwright-report/sample_results.json reports/sample_results.json
-
-          # Configure git (inside the container)
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-          # Make sure we're on the current branch, pull latest just in case
           CURRENT_BRANCH="${GITHUB_REF#refs/heads/}"
           git checkout "$CURRENT_BRANCH"
-          git pull --rebase origin "$CURRENT_BRANCH" || true
+
+          # Fast-forward to latest without touching local generated files
+          git fetch origin "$CURRENT_BRANCH"
+          git merge --ff-only "origin/$CURRENT_BRANCH" || true
 
           git add reports/sample_results.json
           git commit -m "Add Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
