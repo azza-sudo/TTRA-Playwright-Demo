@@ -41,12 +41,8 @@ jobs:
           JSON="${REPORT_DIR}/sample_results.json"
           RUNLOG="${REPORT_DIR}/playwright-run.log"
 
-          # If not using the Playwright docker image, uncomment:
-          # npx playwright install --with-deps
-
-          # Execute tests, emit HTML and JSON, and tee a human-readable log
-          npx playwright test \
-            --reporter=html="${REPORT_DIR}",json="${JSON}" 2>&1 | tee "${RUNLOG}"
+          # Execute tests, emit HTML (default folder) and JSON, and capture a human-readable log
+          npx playwright test --reporter=html,json="${JSON}" 2>&1 | tee "${RUNLOG}"
 
           # Validate JSON exists and is parseable
           test -s "${JSON}"
@@ -56,7 +52,7 @@ jobs:
           mkdir -p reports
           cp -f "${JSON}" reports/sample_results.json
 
-      - name: Show report dir contents
+      - name: Show temp report dir contents
         if: always()
         run: ls -la ${{ runner.temp }}/playwright-report || true
 
@@ -79,7 +75,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: html-report
-          path: ${{ runner.temp }}/playwright-report
+          # HTML report goes to the default folder in the workspace for v1.56
+          path: ${{ github.workspace }}/playwright-report
 
       # --- Commit JSON back to the repo (only on branch runs, not PRs) ---
       - name: Commit JSON report to repo
