@@ -63,47 +63,44 @@ jobs:
           git commit -m "Update Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
           git push origin "HEAD:$CURRENT_BRANCH" || echo "Nothing to push"
 
-  ai-agent:
-    needs: e2e
-    if: ${{ always() }}
+  run-agent:
+    name: Run TestInsight-Agent main.py on results
     runs-on: ubuntu-latest
+    needs: run-tests
+    if: ${{ always() }}  # run even if tests failed
+
     steps:
-      # ✅ Checkout the AI agent repo into ./testinsight
-      - name: Checkout TestInsight Agent
+      - name: Checkout TestInsight-Agent
         uses: actions/checkout@v4
         with:
-          repository: azza-sudo/TestInsight-Agent   # <-- your agent repo
-          path: testinsight
+          # If both repos are under the same owner, this auto-resolves.
+          # Otherwise, set repository: "<owner>/TestInsight-Agent"
+          repository: ${{ github.repository_owner }}/TestInsight-Agent
+          path: TestInsight-Agent
+          # If the repo is private in another org, use a PAT:
+          # token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      # ✅ Pull the JSON artifact into ./reports
-      - name: Download Test Results
+      - name: Download test reports from previous job
         uses: actions/download-artifact@v4
         with:
-          name: sample_results
-          path: reports
+          name: playwright-reports
+          path: artifacts
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
-      - name: Install AI Agent Dependencies
-        working-directory: ${{ github.workspace }}/testinsight
-        run: pip install -r requirements.txt
-
-      - name: Run AI Analysis
-        working-directory: ${{ github.workspace }}/testinsight
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          TESTINSIGHT_DISABLE_AI: 1
+      - name: Install agent dependencies (if any)
+        working-directory: TestInsight-Agent
         run: |
-          echo "Running TestInsight AI Agent..."
-          python main.py "${{ github.workspace }}/reports/sample_results.json"
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Upload AI Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ai-report
-          path: ${{ github.workspace }}/testinsight/ai_report.json
+      - name: Run TestInsight-Agent on Playwright JSON
+        working-directory: TestInsight-Agent
+        env:
+          REPORT_PATH: ${{ github.workspace }}/artifacts/reports/sample_results.json
+        run: |
+          echo "Using report: $REPORT_PATH"
+          # If main.py expects a positional arg, this works:
+          if python - <<'PY'
