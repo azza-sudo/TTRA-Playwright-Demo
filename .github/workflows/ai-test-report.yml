@@ -1,4 +1,4 @@
-name: AI Test Report
+name: AI Test Report Integration
 
 on:
   push:
@@ -6,11 +6,14 @@ on:
   pull_request:
 
 jobs:
+  # -----------------------
+  # 1️⃣ Run Playwright Tests
+  # -----------------------
   run-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Playwright project
+      - name: Checkout Playwright Project
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -21,43 +24,58 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Playwright tests
+      - name: Run Playwright Tests
         run: npx playwright test --reporter=json,html
-      
-      - name: Rename test results
+
+      - name: Rename Playwright JSON Report
         run: mv playwright-report/test-results.json playwright-report/sample_results.json
 
-      - name: Upload JSON report
+      - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
-          path: playwright-report/test-results.json
+          path: playwright-report/sample_results.json
 
+  # -----------------------
+  # 2️⃣ Run AI Agent
+  # -----------------------
   ai-agent:
     needs: run-tests
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout AI Agent
+      - name: Checkout AI Agent Repository
         uses: actions/checkout@v4
         with:
           repository: azza-sudo/TestInsight-Agent
           path: testinsight
 
-      - name: Download Playwright results
+      - name: Download Test Results
         uses: actions/download-artifact@v4
         with:
           name: sample_results
           path: testinsight
 
-      - name: Install dependencies
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install AI Agent Dependencies
         working-directory: testinsight
         run: pip install -r requirements.txt
 
-      - name: Run AI Agent
+      - name: Run AI Analysis
         working-directory: testinsight
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
+          echo "Running TestInsight AI Agent..."
           python main.py sample_results.json
+
+      - name: Upload AI Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-report
+          path: testinsight/ai_report.json
