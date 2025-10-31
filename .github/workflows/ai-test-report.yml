@@ -71,14 +71,14 @@ jobs:
       - name: Checkout AI Agent Repository
         uses: actions/checkout@v4
         with:
-          repository: azza-sudo/TestInsight-Agent
-          path: testinsight
+          repository: azza-sudo/TTRA-Playwright-Demo
+          path: reports
 
       - name: Download Test Results
         uses: actions/download-artifact@v4
         with:
-          name: simple_results                    # << must match upload name
-          path: testinsight
+          name: simple_results                 
+          path: reports
 
       - name: Setup Python
         uses: actions/setup-python@v5
