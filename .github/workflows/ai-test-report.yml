@@ -1,8 +1,6 @@
 name: AI Test Report Integration
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
   
 jobs:
@@ -26,7 +24,8 @@ jobs:
 
       - name: Run Playwright Tests
         run: |
-          npx playwright test --reporter=json,html || true
+          npx playwright test --reporter=html,json --output=playwright-report --reporter=json > playwright-report/test-results.json || true
+
 
       - name: Rename JSON Report
         run: mv playwright-report/test-results.json playwright-report/sample_results.json
