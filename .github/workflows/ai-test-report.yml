@@ -1,9 +1,7 @@
 name: AI Test Report Integration (Demo)
 
 on:
-  push:
-    branches: [ main ]        # adjust as needed
-  pull_request:               # PRs run too (but we won't push commits on PRs)
+  workflow_dispatch:
 
 permissions:
   contents: write   # needed to push the JSON file
