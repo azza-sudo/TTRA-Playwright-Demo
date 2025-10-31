@@ -36,7 +36,7 @@ jobs:
           npx playwright test 2>&1 | tee "${RUNLOG}"
 
           # ✅ Make sure the JSON we need exists and is valid
-          JSON="${{ github.workspace }}/reports/simple-results.json"
+          JSON="${{ github.workspace }}/reports/sample_results.json"
           test -s "${JSON}"
           node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}"
 
@@ -44,8 +44,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: simple_results                     # << artifact name
-          path: reports/simple-results.json        # << file in repo
+          name: sample_results                     # << artifact name
+          path: reports/sample_results.json        # << file in repo
 
       - name: Commit JSON report to repo
         if: ${{ always() && github.event_name != 'pull_request' && startsWith(github.ref, 'refs/heads/') }}
@@ -59,7 +59,7 @@ jobs:
           git checkout "$CURRENT_BRANCH"
           git fetch origin "$CURRENT_BRANCH"
           git merge --ff-only "origin/$CURRENT_BRANCH" || true
-          git add reports/simple-results.json      # << commit the same file
+          git add reports/sample_results.json      # << commit the same file
           git commit -m "Update Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
           git push origin "HEAD:$CURRENT_BRANCH" || echo "Nothing to push"
 
@@ -77,7 +77,7 @@ jobs:
       - name: Download Test Results
         uses: actions/download-artifact@v4
         with:
-          name: simple_results                 
+          name: sample_results                 
           path: reports
 
       - name: Setup Python
@@ -97,7 +97,7 @@ jobs:
           TESTINSIGHT_DISABLE_AI: 1
         run: |
           echo "Running TestInsight AI Agent..."
-          python main.py simple-results.json      # << pass the correct filename
+          python main.py sample_results.json      # << pass the correct filename
 
       - name: Upload AI Report
         if: always()
