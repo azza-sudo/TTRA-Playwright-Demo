@@ -1,20 +1,23 @@
 name: AI Test Report Integration (Demo)
 
 on:
-    workflow_dispatch:
+  push:
+    branches: [ main ]        # adjust as needed
+  pull_request:               # PRs run too (but we won't push commits on PRs)
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-  
+  contents: write   # needed to push the JSON file
+
 jobs:
   e2e:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble  # match @playwright/test
+      image: mcr.microsoft.com/playwright:v1.56.1-noble  # matches @playwright/test 1.56.x
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -27,46 +30,55 @@ jobs:
         run: |
           mkdir -p playwright-report
           npx playwright --version || true
-          # Run once; JSON goes to stdout so redirect it to a file.
-          npm test > playwright-report/sample_results.json || true
+          # JSON reporter prints to stdout, redirect to file. Allow failure so artifacts still upload.
+          npx playwright test --reporter=html,json > playwright-report/sample_results.json || true
 
           # Safety net if JSON missing/empty
           if [ ! -s playwright-report/sample_results.json ]; then
             echo '{"status":"no-tests-or-failure","suites":[]}' > playwright-report/sample_results.json
           fi
 
-      - name: Commit JSON report to repo
-        if: always()
-        run: |
-            mkdir -p reports
-            cp playwright-report/sample_results.json reports/sample_results.json
-        
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add reports/sample_results.json
-            git commit -m "Add Playwright JSON report for ${GITHUB_SHA}" || echo "No changes to commit"
-            git push
-
-
-      - name: Upload Playwright JSON
+      - name: Upload Playwright JSON (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
           path: playwright-report/sample_results.json
 
-      - name: Upload Playwright HTML
+      - name: Upload Playwright HTML (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: html-report
           path: playwright-report/
 
+      # --- Commit JSON back to the repo (only on branch runs, not PRs) ---
+      - name: Commit JSON report to repo
+        if: ${{ always() && github.event_name != 'pull_request' && startsWith(github.ref, 'refs/heads/') }}
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -e
+          mkdir -p reports
+          cp -f playwright-report/sample_results.json reports/sample_results.json
+
+          # Configure git (inside the container)
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+          # Make sure we're on the current branch, pull latest just in case
+          CURRENT_BRANCH="${GITHUB_REF#refs/heads/}"
+          git checkout "$CURRENT_BRANCH"
+          git pull --rebase origin "$CURRENT_BRANCH" || true
+
+          git add reports/sample_results.json
+          git commit -m "Add Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
+          git push origin "HEAD:$CURRENT_BRANCH" || echo "Nothing to push"
+
   ai-agent:
     needs: e2e
     if: ${{ always() }}  # run even if tests failed
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout AI Agent Repository
         uses: actions/checkout@v4
