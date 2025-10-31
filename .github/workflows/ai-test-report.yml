@@ -35,8 +35,6 @@ jobs:
           if [ ! -s playwright-report/sample_results.json ]; then
             echo '{"status":"no-tests-or-failure","suites":[]}' > playwright-report/sample_results.json
           fi
-      - name: List discovered tests
-        run: npx playwright test --list
         
       - name: Upload Playwright JSON (artifact)
         if: always()
