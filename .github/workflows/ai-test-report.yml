@@ -97,6 +97,8 @@ jobs:
         working-directory: TestInsight-Agent
         env:
           REPORT_PATH: ${{ github.workspace }}/artifacts/sample_results.json
+          PYTHONUNBUFFERED: "1"
+          STRICT_FAILS: "false"     # set "true" to fail the job on test failures
         run: |
           set -euxo pipefail
           echo "Using report: $REPORT_PATH"
