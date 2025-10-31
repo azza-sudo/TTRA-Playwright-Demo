@@ -2,7 +2,7 @@ name: AI Test Report Integration (Demo)
 
 on:
   workflow_dispatch:
-  
+
 jobs:
   e2e:
     runs-on: ubuntu-latest
@@ -10,57 +10,41 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.47.2-noble  # match your Playwright version
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
-        with: { node-version: '20', cache: 'npm' }
-
-      # expose the installed Playwright version for cache key
-      - name: Read Playwright version
-        id: pw
-        run: echo "PW_VERSION=$(node -p \"require('@playwright/test/package.json').version\")" >> $GITHUB_ENV
-
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
         with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-pw-${{ env.PW_VERSION }}
+          node-version: '20'
+          cache: 'npm'
 
       - run: npm ci
-      - run: npx playwright install --with-deps
-      - run: npx playwright test
 
-      - name: Run Playwright Tests (HTML + JSON to file)
+      # Single test run that produces BOTH HTML and JSON
+      - name: Run Playwright Tests (HTML + JSON)
         run: |
-          set -o pipefail
           mkdir -p playwright-report
-          # Run with both reporters; capture JSON stdout to file reliably.
-          # 'tee' writes to the file AND still lets you see JSON in logs.
-          npx playwright test --reporter=html,json --output=playwright-report | tee playwright-report/sample_results.json || true
-      
-          # If for any reason the file is empty or missing, create a minimal JSON so later steps don't fail.
+          # Playwright's JSON reporter prints to stdout; redirect it to file.
+          # HTML reporter writes files into playwright-report/.
+          npx playwright test --reporter=html,json > playwright-report/sample_results.json
+
+          # Safety net if no tests ran / file missing
           if [ ! -s playwright-report/sample_results.json ]; then
             echo '{"status":"no-tests-or-failure","suites":[]}' > playwright-report/sample_results.json
           fi
-      
-          echo "=== Post-run listing ==="
-          ls -lah playwright-report
-          echo "JSON size:" $(wc -c < playwright-report/sample_results.json)
-      
-      - name: Upload Playwright Results (JSON)
+
+      - name: Upload Playwright JSON
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
           path: playwright-report/sample_results.json
 
-      # (Optional) If you want to upload the HTML report as well:
-      - name: Upload HTML Report
+      - name: Upload Playwright HTML
         uses: actions/upload-artifact@v4
         with:
           name: html-report
           path: playwright-report/
 
-
   ai-agent:
-    needs: run-tests
+    needs: e2e        # <-- fixed dependency
     runs-on: ubuntu-latest
 
     steps:
