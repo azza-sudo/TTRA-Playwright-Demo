@@ -21,7 +21,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm ci
+      - run: npm reports
 
       - name: List discovered tests (sanity)
         run: npx playwright test --list || true
@@ -42,15 +42,15 @@ jobs:
               test -s "${JSON}"
               node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}"
     
-              mkdir -p ci
-              cp -f "${JSON}" ci/sample_results.json
+              mkdir -p reports
+              cp -f "${JSON}" reports/sample_results.json
               
       - name: Upload Playwright JSON (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
-          path: ci/sample_results.json
+          path: reports/sample_results.json
 
       - name: Commit JSON report to repo
         if: ${{ always() && github.event_name != 'pull_request' && startsWith(github.ref, 'refs/heads/') }}
@@ -64,7 +64,7 @@ jobs:
           git checkout "$CURRENT_BRANCH"
           git fetch origin "$CURRENT_BRANCH"
           git merge --ff-only "origin/$CURRENT_BRANCH" || true
-          git add ci/sample_results.json
+          git add reports/sample_results.json
           git commit -m "Update Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
           git push origin "HEAD:$CURRENT_BRANCH" || echo "Nothing to push"
 
