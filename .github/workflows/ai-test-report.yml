@@ -22,23 +22,36 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright Tests and Save JSON
+      - name: Run Playwright Tests (HTML + JSON to file)
         run: |
+          set -o pipefail
           mkdir -p playwright-report
-          npx playwright test --reporter=html,json --output=playwright-report > playwright-report/sample_results.json || true
-
-      - name: Upload Playwright Results
+          # Run with both reporters; capture JSON stdout to file reliably.
+          # 'tee' writes to the file AND still lets you see JSON in logs.
+          npx playwright test --reporter=html,json --output=playwright-report | tee playwright-report/sample_results.json || true
+      
+          # If for any reason the file is empty or missing, create a minimal JSON so later steps don't fail.
+          if [ ! -s playwright-report/sample_results.json ]; then
+            echo '{"status":"no-tests-or-failure","suites":[]}' > playwright-report/sample_results.json
+          fi
+      
+          echo "=== Post-run listing ==="
+          ls -lah playwright-report
+          echo "JSON size:" $(wc -c < playwright-report/sample_results.json)
+      
+      - name: Upload Playwright Results (JSON)
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
           path: playwright-report/sample_results.json
 
-      - name: Upload Debug Artifacts
-        if: always()
+      # (Optional) If you want to upload the HTML report as well:
+      - name: Upload HTML Report
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-artifacts
-          path: test-results/
+          name: html-report
+          path: playwright-report/
+
 
   ai-agent:
     needs: run-tests
