@@ -29,20 +29,28 @@ jobs:
           set -e
           REPORT_DIR="${{ runner.temp }}/playwright-report"
           mkdir -p "$REPORT_DIR"
-
+      
+          # Optional: see version
           npx playwright --version || true
-
-          # HTML report goes to a temp dir; JSON reporter prints to stdout -> file.
-          npx playwright test --reporter=html="$REPORT_DIR",json > "$REPORT_DIR/sample_results.json" || true
-
-          # Safety net if JSON missing/empty
-          if [ ! -s "$REPORT_DIR/sample_results.json" ]; then
-            echo '{"status":"no-tests-or-failure","suites":[]}' > "$REPORT_DIR/sample_results.json"
+      
+          # Make JSON reporter write to a file explicitly
+          npx playwright test \
+            --reporter=html="${REPORT_DIR}",json="${REPORT_DIR}/sample_results.json" || true
+      
+          # Safety net if the file is still missing/empty
+          if [ ! -s "${REPORT_DIR}/sample_results.json" ]; then
+            echo '{"status":"no-tests-or-failure","suites":[]}' > "${REPORT_DIR}/sample_results.json"
           fi
-
-          # Prepare repo folder for the committed JSON
+      
           mkdir -p reports
-          cp -f "$REPORT_DIR/sample_results.json" reports/sample_results.json
+          cp -f "${REPORT_DIR}/sample_results.json" reports/sample_results.json
+
+      - name: List discovered tests
+        run: npx playwright test --list || true
+      
+      - name: Show report dir contents
+        if: always()
+        run: ls -la ${{ runner.temp }}/playwright-report || true
 
       - name: Upload Playwright JSON (artifact)
         if: always()
