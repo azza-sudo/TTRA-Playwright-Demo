@@ -6,9 +6,6 @@ on:
   pull_request:
 
 jobs:
-  # -----------------------
-  # 1️⃣ Run Playwright Tests
-  # -----------------------
   run-tests:
     runs-on: ubuntu-latest
 
@@ -28,20 +25,25 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright Tests
-        run: npx playwright test --reporter=json,html
+        run: |
+          npx playwright test --reporter=json,html || true
 
-      - name: Rename Playwright JSON Report
+      - name: Rename JSON Report
         run: mv playwright-report/test-results.json playwright-report/sample_results.json
 
-      - name: Upload Test Results
+      - name: Upload Playwright Results
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
           path: playwright-report/sample_results.json
 
-  # -----------------------
-  # 2️⃣ Run AI Agent
-  # -----------------------
+      - name: Upload Debug Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: test-results/
+
   ai-agent:
     needs: run-tests
     runs-on: ubuntu-latest
@@ -77,7 +79,8 @@ jobs:
           echo "Running TestInsight AI Agent..."
           python main.py sample_results.json
 
-      - name: Upload AI Report Artifact
+      - name: Upload AI Report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ai-report
