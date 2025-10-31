@@ -34,41 +34,15 @@ jobs:
           JSON="${REPORT_DIR}/sample_results.json"
           RUNLOG="${{ runner.temp }}/playwright-run.log"
 
-          mkdir -p "${REPORT_DIR}" "$(dirname "${RUNLOG}")"
-
           echo "Playwright CLI: $(npx playwright --version || true)"
           echo "Node: $(node -v)"; echo "npm: $(npm -v)"
 
-          # Prefer a config that sets json reporter with outputFile pointing to ${JSON}.
-          # If not present, we still capture a human-readable log for fallback parsing.
-          npx playwright test --reporter=json,html 2>&1 | tee "${RUNLOG}"
+          # Single run; reporters + output file come from playwright.config.*
+          npx playwright test 2>&1 | tee "${RUNLOG}"
 
-          # If the config wrote JSON to stdout (common), try to extract the JSON object
-          # from the log into ${JSON}. If ${JSON} already exists (from config outputFile),
-          # this step will be skipped.
-          if [ ! -s "${JSON}" ]; then
-            awk 'BEGIN{json=0}
-                 /^\\{/ {json=1}
-                 json==1 {print}
-                ' "${RUNLOG}" > "${JSON}" || true
-          fi
-
-          # Validate JSON; if still missing or invalid, write a minimal summary JSON
-          if ! [ -s "${JSON}" ] || ! node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}" 2>/dev/null; then
-            echo "⚠️ JSON report missing or invalid. Creating minimal summary JSON from console log."
-            # Derive totals from the log (e.g., 'Running 15 tests', '11 passed', '4 failed')
-            TOTAL=$(grep -Eo 'Running[[:space:]]+[0-9]+' "${RUNLOG}" | awk '{print $2}' | tail -n1 || echo "")
-            PASSED=$(grep -Eo '[0-9]+[[:space:]]+passed' "${RUNLOG}" | awk '{print $1}' | tail -n1 || echo "0")
-            FAILED=$(grep -Eo '[0-9]+[[:space:]]+failed' "${RUNLOG}" | awk '{print $1}' | tail -n1 || echo "0")
-            if [ -z "${TOTAL}" ]; then TOTAL=$((PASSED + FAILED)); fi
-            mkdir -p "${REPORT_DIR}"
-            cat > "${JSON}" <<EOF
-{
-  "summary": { "total": ${TOTAL:-0}, "passed": ${PASSED:-0}, "failed": ${FAILED:-0} },
-  "failures": []
-}
-EOF
-          fi
+          # Validate JSON exists and is parseable
+          test -s "${JSON}"
+          node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}"
 
           mkdir -p reports
           cp -f "${JSON}" reports/sample_results.json
@@ -134,11 +108,7 @@ EOF
 
       - name: Install AI Agent Dependencies
         working-directory: testinsight
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt || true
-          # Ensure requests + dotenv + openai are available for main.py
-          pip install requests python-dotenv openai
+        run: pip install -r requirements.txt
 
       - name: Run AI Analysis
         working-directory: testinsight
@@ -147,8 +117,7 @@ EOF
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           echo "Running TestInsight AI Agent..."
-          # Provide the run log as a fallback parsing source if needed
-          python main.py sample_results.json --runlog "${{ runner.temp }}/playwright-run.log"
+          python main.py sample_results.json
 
       - name: Upload AI Report
         if: always()
