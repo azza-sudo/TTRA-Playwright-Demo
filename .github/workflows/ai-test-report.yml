@@ -1,0 +1,60 @@
+name: AI Test Report
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Playwright project
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Playwright tests
+        run: npx playwright test --reporter=json,html
+
+      - name: Upload JSON report
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample_results
+          path: playwright-report/test-results.json
+
+  ai-agent:
+    needs: run-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout AI Agent
+        uses: actions/checkout@v4
+        with:
+          repository: azza-sudo/TestInsight-Agent
+          path: testinsight
+
+      - name: Download Playwright results
+        uses: actions/download-artifact@v4
+        with:
+          name: sample_results
+          path: testinsight
+
+      - name: Install dependencies
+        working-directory: testinsight
+        run: pip install -r requirements.txt
+
+      - name: Run AI Agent
+        working-directory: testinsight
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          python main.py sample_results.json
