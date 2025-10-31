@@ -29,44 +29,28 @@ jobs:
       - name: Run Playwright Tests (HTML + JSON + LOG)
         shell: bash
         run: |
-          set -euxo pipefail
-          REPORT_DIR="${{ github.workspace }}/playwright-report"
-          JSON="${REPORT_DIR}/sample_results.json"
-          RUNLOG="${{ runner.temp }}/playwright-run.log"
-
-          echo "Playwright CLI: $(npx playwright --version || true)"
-          echo "Node: $(node -v)"; echo "npm: $(npm -v)"
-
-          # Single run; reporters + output file come from playwright.config.*
-          npx playwright test 2>&1 | tee "${RUNLOG}"
-
-          # Validate JSON exists and is parseable
-          test -s "${JSON}"
-          node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}"
-
-          mkdir -p reports
-          cp -f "${JSON}" reports/sample_results.json
-
+              set -euxo pipefail
+              REPORT_DIR="${{ github.workspace }}/playwright-report"
+              JSON="${REPORT_DIR}/sample_results.json"
+              RUNLOG="${{ runner.temp }}/playwright-run.log"
+    
+              echo "Playwright CLI: $(npx playwright --version || true)"
+              echo "Node: $(node -v)"; echo "npm: $(npm -v)"
+    
+              npx playwright test 2>&1 | tee "${RUNLOG}"
+    
+              test -s "${JSON}"
+              node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}"
+    
+              mkdir -p ci
+              cp -f "${JSON}" ci/sample_results.json
+              
       - name: Upload Playwright JSON (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
-          path: reports/sample_results.json
-
-      - name: Upload Playwright LOG (artifact)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-run-log
-          path: ${{ runner.temp }}/playwright-run.log
-
-      - name: Upload Playwright HTML (artifact)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: html-report
-          path: ${{ github.workspace }}/playwright-report
+          path: ci/sample_results.json
 
       - name: Commit JSON report to repo
         if: ${{ always() && github.event_name != 'pull_request' && startsWith(github.ref, 'refs/heads/') }}
@@ -80,8 +64,8 @@ jobs:
           git checkout "$CURRENT_BRANCH"
           git fetch origin "$CURRENT_BRANCH"
           git merge --ff-only "origin/$CURRENT_BRANCH" || true
-          git add reports/sample_results.json
-          git commit -m "Add Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
+          git add ci/sample_results.json
+          git commit -m "Update Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
           git push origin "HEAD:$CURRENT_BRANCH" || echo "Nothing to push"
 
   ai-agent:
