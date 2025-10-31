@@ -35,7 +35,7 @@ jobs:
           echo "Node: $(node -v)"; echo "npm: $(npm -v)"
           npx playwright test 2>&1 | tee "${RUNLOG}"
 
-          # ✅ Make sure the JSON we need exists and is valid
+          # ✅ Ensure JSON exists and is valid
           JSON="${{ github.workspace }}/reports/sample_results.json"
           test -s "${JSON}"
           node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}"
@@ -44,8 +44,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sample_results                     # << artifact name
-          path: reports/sample_results.json        # << file in repo
+          name: sample_results            # <<< keep this name
+          path: reports/sample_results.json
 
       - name: Commit JSON report to repo
         if: ${{ always() && github.event_name != 'pull_request' && startsWith(github.ref, 'refs/heads/') }}
@@ -59,31 +59,28 @@ jobs:
           git checkout "$CURRENT_BRANCH"
           git fetch origin "$CURRENT_BRANCH"
           git merge --ff-only "origin/$CURRENT_BRANCH" || true
-          git add reports/sample_results.json      # << commit the same file
+          git add reports/sample_results.json
           git commit -m "Update Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
           git push origin "HEAD:$CURRENT_BRANCH" || echo "Nothing to push"
 
   run-agent:
     name: Run TestInsight-Agent main.py on results
     runs-on: ubuntu-latest
-    needs: run-tests
-    if: ${{ always() }}  # run even if tests failed
+    needs: e2e                     # <<< fix: depend on the e2e job
+    if: ${{ always() }}
 
     steps:
       - name: Checkout TestInsight-Agent
         uses: actions/checkout@v4
         with:
-          # If both repos are under the same owner, this auto-resolves.
-          # Otherwise, set repository: "<owner>/TestInsight-Agent"
           repository: ${{ github.repository_owner }}/TestInsight-Agent
           path: TestInsight-Agent
-          # If the repo is private in another org, use a PAT:
-          # token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          # token: ${{ secrets.PAT_FOR_CROSS_REPO }}  # if needed for private/cross-org
 
-      - name: Download test reports from previous job
+      - name: Download test report artifact
         uses: actions/download-artifact@v4
         with:
-          name: playwright-reports
+          name: sample_results       # <<< match the upload name
           path: artifacts
 
       - name: Setup Python
@@ -101,6 +98,10 @@ jobs:
         env:
           REPORT_PATH: ${{ github.workspace }}/artifacts/reports/sample_results.json
         run: |
+          set -euxo pipefail
           echo "Using report: $REPORT_PATH"
-          # If main.py expects a positional arg, this works:
-          if python - <<'PY'
+          test -s "$REPORT_PATH"
+          # If main.py takes a positional arg:
+          python main.py "$REPORT_PATH"
+          # If it needs a flag instead, use:
+          # python main.py --report "$REPORT_PATH"
