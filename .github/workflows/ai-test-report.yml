@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # needed to push the JSON file
+  contents: write
 
 jobs:
   e2e:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble  # matches @playwright/test 1.56.x
+      image: mcr.microsoft.com/playwright:v1.56.1-noble  # match @playwright/test 1.56.x
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -24,30 +24,37 @@ jobs:
 
       - run: npm ci
 
-      - name: Run Playwright Tests (HTML + JSON)
+      - name: List discovered tests (sanity)
+        run: npx playwright test --list || true
+
+      - name: Run Playwright Tests (HTML + JSON + LOG)
         run: |
-          set -e
+          set -euxo pipefail
           REPORT_DIR="${{ runner.temp }}/playwright-report"
           mkdir -p "$REPORT_DIR"
-      
-          # Optional: see version
-          npx playwright --version || true
-      
-          # Make JSON reporter write to a file explicitly
-          npx playwright test \
-            --reporter=html="${REPORT_DIR}",json="${REPORT_DIR}/sample_results.json" || true
-      
-          # Safety net if the file is still missing/empty
-          if [ ! -s "${REPORT_DIR}/sample_results.json" ]; then
-            echo '{"status":"no-tests-or-failure","suites":[]}' > "${REPORT_DIR}/sample_results.json"
-          fi
-      
-          mkdir -p reports
-          cp -f "${REPORT_DIR}/sample_results.json" reports/sample_results.json
 
-      - name: List discovered tests
-        run: npx playwright test --list || true
-      
+          echo "Playwright CLI: $(npx playwright --version || true)"
+          echo "Node: $(node -v)"
+          echo "npm: $(npm -v)"
+
+          JSON="${REPORT_DIR}/sample_results.json"
+          RUNLOG="${REPORT_DIR}/playwright-run.log"
+
+          # If not using the Playwright docker image, uncomment:
+          # npx playwright install --with-deps
+
+          # Execute tests, emit HTML and JSON, and tee a human-readable log
+          npx playwright test \
+            --reporter=html="${REPORT_DIR}",json="${JSON}" 2>&1 | tee "${RUNLOG}"
+
+          # Validate JSON exists and is parseable
+          test -s "${JSON}"
+          node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}"
+
+          # Copy JSON into repo dir for commit/artifact
+          mkdir -p reports
+          cp -f "${JSON}" reports/sample_results.json
+
       - name: Show report dir contents
         if: always()
         run: ls -la ${{ runner.temp }}/playwright-report || true
@@ -58,6 +65,13 @@ jobs:
         with:
           name: sample_results
           path: reports/sample_results.json
+
+      - name: Upload Playwright LOG (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-run-log
+          path: ${{ runner.temp }}/playwright-report/playwright-run.log
 
       - name: Upload Playwright HTML (artifact)
         if: always()
@@ -78,8 +92,6 @@ jobs:
 
           CURRENT_BRANCH="${GITHUB_REF#refs/heads/}"
           git checkout "$CURRENT_BRANCH"
-
-          # Fast-forward to latest without touching local generated files
           git fetch origin "$CURRENT_BRANCH"
           git merge --ff-only "origin/$CURRENT_BRANCH" || true
 
@@ -89,7 +101,7 @@ jobs:
 
   ai-agent:
     needs: e2e
-    if: ${{ always() }}  # run even if tests failed
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout AI Agent Repository
