@@ -10,12 +10,11 @@ jobs:
   e2e:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble  # match @playwright/test 1.56.x
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        with: { fetch-depth: 0 }
 
       - uses: actions/setup-node@v4
         with:
@@ -31,30 +30,22 @@ jobs:
         shell: bash
         run: |
           set -euxo pipefail
-          REPORT_DIR="${{ runner.temp }}/playwright-report"
-          mkdir -p "$REPORT_DIR"
+          REPORT_DIR="${{ github.workspace }}/playwright-report"
+          JSON="${REPORT_DIR}/sample_results.json"
+          RUNLOG="${{ runner.temp }}/playwright-run.log"
 
           echo "Playwright CLI: $(npx playwright --version || true)"
-          echo "Node: $(node -v)"
-          echo "npm: $(npm -v)"
+          echo "Node: $(node -v)"; echo "npm: $(npm -v)"
 
-          JSON="${REPORT_DIR}/sample_results.json"
-          RUNLOG="${REPORT_DIR}/playwright-run.log"
-
-          # Execute tests, emit HTML (default folder) and JSON, and capture a human-readable log
-          npx playwright test --reporter=html,json="${JSON}" 2>&1 | tee "${RUNLOG}"
+          # Single run; reporters + output file come from playwright.config.*
+          npx playwright test 2>&1 | tee "${RUNLOG}"
 
           # Validate JSON exists and is parseable
           test -s "${JSON}"
           node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "${JSON}"
 
-          # Copy JSON into repo dir for commit/artifact
           mkdir -p reports
           cp -f "${JSON}" reports/sample_results.json
-
-      - name: Show temp report dir contents
-        if: always()
-        run: ls -la ${{ runner.temp }}/playwright-report || true
 
       - name: Upload Playwright JSON (artifact)
         if: always()
@@ -68,17 +59,15 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-run-log
-          path: ${{ runner.temp }}/playwright-report/playwright-run.log
+          path: ${{ runner.temp }}/playwright-run.log
 
       - name: Upload Playwright HTML (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: html-report
-          # HTML report goes to the default folder in the workspace for v1.56
           path: ${{ github.workspace }}/playwright-report
 
-      # --- Commit JSON back to the repo (only on branch runs, not PRs) ---
       - name: Commit JSON report to repo
         if: ${{ always() && github.event_name != 'pull_request' && startsWith(github.ref, 'refs/heads/') }}
         working-directory: ${{ github.workspace }}
@@ -87,12 +76,10 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
           CURRENT_BRANCH="${GITHUB_REF#refs/heads/}"
           git checkout "$CURRENT_BRANCH"
           git fetch origin "$CURRENT_BRANCH"
           git merge --ff-only "origin/$CURRENT_BRANCH" || true
-
           git add reports/sample_results.json
           git commit -m "Add Playwright JSON report for $GITHUB_SHA" || echo "No changes to commit"
           git push origin "HEAD:$CURRENT_BRANCH" || echo "Nothing to push"
