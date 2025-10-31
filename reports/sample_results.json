@@ -1,0 +1,1235 @@
+{
+  "config": {
+    "configFile": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/playwright.config.ts",
+    "rootDir": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests",
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/commit/956e9580c697059ad7618b2bce4c4035611fd72a",
+        "commitHash": "956e9580c697059ad7618b2bce4c4035611fd72a",
+        "buildHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/actions/runs/18975038685"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/sample_results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/commit/956e9580c697059ad7618b2bce4c4035611fd72a",
+            "commitHash": "956e9580c697059ad7618b2bce4c4035611fd72a",
+            "buildHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/actions/runs/18975038685"
+          },
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "signIn.test.ts",
+      "file": "signIn.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Sign In Tests",
+          "file": "signIn.test.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User can sign in with valid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3948,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:08:10.419Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "02220b02503870c50f08-6521e89c65dcbc6ceae3",
+              "file": "signIn.test.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "User cannot sign in with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4003,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:08:14.523Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "02220b02503870c50f08-6631705d3f688797537f",
+              "file": "signIn.test.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "User cannot sign in with empty email and password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4098,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:08:18.544Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "02220b02503870c50f08-829e4c8b9a6e35692841",
+              "file": "signIn.test.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "User cannot sign in with only email filled",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8491,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 54,
+                          "line": 50
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:50\n\n\u001b[0m \u001b[90m 48 |\u001b[39m   }\n \u001b[90m 49 |\u001b[39m   \u001b[36masync\u001b[39m assertFieldValidation(message\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfieldError))\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m   }\n \u001b[90m 52 |\u001b[39m }\n \u001b[90m 53 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 54,
+                            "line": 50
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:50\n\n  48 |   }\n  49 |   async assertFieldValidation(message: string) {\n> 50 |     await expect(this.page.locator(this.fieldError)).toContainText(message);\n     |                                                      ^\n  51 |   }\n  52 | }\n  53 |\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:08:22.656Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 54,
+                        "line": 50
+                      }
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 9012,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 54,
+                          "line": 50
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:50\n\n\u001b[0m \u001b[90m 48 |\u001b[39m   }\n \u001b[90m 49 |\u001b[39m   \u001b[36masync\u001b[39m assertFieldValidation(message\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfieldError))\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m   }\n \u001b[90m 52 |\u001b[39m }\n \u001b[90m 53 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 54,
+                            "line": 50
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:50\n\n  48 |   }\n  49 |   async assertFieldValidation(message: string) {\n> 50 |     await expect(this.page.locator(this.fieldError)).toContainText(message);\n     |                                                      ^\n  51 |   }\n  52 | }\n  53 |\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-10-31T14:08:31.738Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium-retry1/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 54,
+                        "line": 50
+                      }
+                    },
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8885,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 54,
+                          "line": 50
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:50\n\n\u001b[0m \u001b[90m 48 |\u001b[39m   }\n \u001b[90m 49 |\u001b[39m   \u001b[36masync\u001b[39m assertFieldValidation(message\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfieldError))\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m   }\n \u001b[90m 52 |\u001b[39m }\n \u001b[90m 53 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 54,
+                            "line": 50
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:50\n\n  48 |   }\n  49 |   async assertFieldValidation(message: string) {\n> 50 |     await expect(this.page.locator(this.fieldError)).toContainText(message);\n     |                                                      ^\n  51 |   }\n  52 | }\n  53 |\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 2,
+                      "startTime": "2025-10-31T14:08:41.899Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium-retry2/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium-retry2/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c3c57-n-in-with-only-email-filled-chromium-retry2/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 54,
+                        "line": 50
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "02220b02503870c50f08-afd8c29a259f159e20d2",
+              "file": "signIn.test.ts",
+              "line": 28,
+              "column": 9
+            },
+            {
+              "title": "User cannot sign in with only password filled",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8664,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 54,
+                          "line": 50
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:50\n\n\u001b[0m \u001b[90m 48 |\u001b[39m   }\n \u001b[90m 49 |\u001b[39m   \u001b[36masync\u001b[39m assertFieldValidation(message\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfieldError))\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m   }\n \u001b[90m 52 |\u001b[39m }\n \u001b[90m 53 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 54,
+                            "line": 50
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:50\n\n  48 |   }\n  49 |   async assertFieldValidation(message: string) {\n> 50 |     await expect(this.page.locator(this.fieldError)).toContainText(message);\n     |                                                      ^\n  51 |   }\n  52 | }\n  53 |\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:08:51.447Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 54,
+                        "line": 50
+                      }
+                    },
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8684,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 54,
+                          "line": 50
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:50\n\n\u001b[0m \u001b[90m 48 |\u001b[39m   }\n \u001b[90m 49 |\u001b[39m   \u001b[36masync\u001b[39m assertFieldValidation(message\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfieldError))\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m   }\n \u001b[90m 52 |\u001b[39m }\n \u001b[90m 53 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 54,
+                            "line": 50
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:50\n\n  48 |   }\n  49 |   async assertFieldValidation(message: string) {\n> 50 |     await expect(this.page.locator(this.fieldError)).toContainText(message);\n     |                                                      ^\n  51 |   }\n  52 | }\n  53 |\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-10-31T14:09:00.807Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium-retry1/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 54,
+                        "line": 50
+                      }
+                    },
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8173,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 54,
+                          "line": 50
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:50\n\n\u001b[0m \u001b[90m 48 |\u001b[39m   }\n \u001b[90m 49 |\u001b[39m   \u001b[36masync\u001b[39m assertFieldValidation(message\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfieldError))\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m   }\n \u001b[90m 52 |\u001b[39m }\n \u001b[90m 53 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 54,
+                            "line": 50
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:50\n\n  48 |   }\n  49 |   async assertFieldValidation(message: string) {\n> 50 |     await expect(this.page.locator(this.fieldError)).toContainText(message);\n     |                                                      ^\n  51 |   }\n  52 | }\n  53 |\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 2,
+                      "startTime": "2025-10-31T14:09:10.633Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium-retry2/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium-retry2/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--c5a28-n-with-only-password-filled-chromium-retry2/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 54,
+                        "line": 50
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "02220b02503870c50f08-4b87f36f61512533f542",
+              "file": "signIn.test.ts",
+              "line": 35,
+              "column": 9
+            },
+            {
+              "title": "User cannot sign in with invalid email format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3450,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:09:19.481Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "02220b02503870c50f08-ac607f6cbd4ff5d974dd",
+              "file": "signIn.test.ts",
+              "line": 41,
+              "column": 7
+            },
+            {
+              "title": "User can log out successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 14628,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 21,
+                          "line": 23
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:23\n\n\u001b[0m \u001b[90m 21 |\u001b[39m   }\n \u001b[90m 22 |\u001b[39m   \u001b[36masync\u001b[39m logout() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"profile-menu\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"logout-button\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 21,
+                            "line": 23
+                          },
+                          "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:23\n\n  21 |   }\n  22 |   async logout() {\n> 23 |     await this.page.click('[data-testid=\"profile-menu\"]');\n     |                     ^\n  24 |     await this.page.click('[data-testid=\"logout-button\"]');\n  25 |\n  26 |   }\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:09:23.027Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 21,
+                        "line": 23
+                      }
+                    },
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 14854,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 21,
+                          "line": 23
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:23\n\n\u001b[0m \u001b[90m 21 |\u001b[39m   }\n \u001b[90m 22 |\u001b[39m   \u001b[36masync\u001b[39m logout() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"profile-menu\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"logout-button\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 21,
+                            "line": 23
+                          },
+                          "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:23\n\n  21 |   }\n  22 |   async logout() {\n> 23 |     await this.page.click('[data-testid=\"profile-menu\"]');\n     |                     ^\n  24 |     await this.page.click('[data-testid=\"logout-button\"]');\n  25 |\n  26 |   }\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-10-31T14:09:38.260Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium-retry1/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 21,
+                        "line": 23
+                      }
+                    },
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 14384,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 21,
+                          "line": 23
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:23\n\n\u001b[0m \u001b[90m 21 |\u001b[39m   }\n \u001b[90m 22 |\u001b[39m   \u001b[36masync\u001b[39m logout() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"profile-menu\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"logout-button\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 21,
+                            "line": 23
+                          },
+                          "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:23\n\n  21 |   }\n  22 |   async logout() {\n> 23 |     await this.page.click('[data-testid=\"profile-menu\"]');\n     |                     ^\n  24 |     await this.page.click('[data-testid=\"logout-button\"]');\n  25 |\n  26 |   }\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 2,
+                      "startTime": "2025-10-31T14:09:54.308Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium-retry2/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium-retry2/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User-can-log-out-successfully-chromium-retry2/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 21,
+                        "line": 23
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "02220b02503870c50f08-48fb95a8b64d6f0f5b71",
+              "file": "signIn.test.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "User cannot access dashboard after logout",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 14313,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 21,
+                          "line": 23
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:23\n\n\u001b[0m \u001b[90m 21 |\u001b[39m   }\n \u001b[90m 22 |\u001b[39m   \u001b[36masync\u001b[39m logout() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"profile-menu\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"logout-button\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 21,
+                            "line": 23
+                          },
+                          "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:23\n\n  21 |   }\n  22 |   async logout() {\n> 23 |     await this.page.click('[data-testid=\"profile-menu\"]');\n     |                     ^\n  24 |     await this.page.click('[data-testid=\"logout-button\"]');\n  25 |\n  26 |   }\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:10:09.398Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 21,
+                        "line": 23
+                      }
+                    },
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 14985,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 21,
+                          "line": 23
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:23\n\n\u001b[0m \u001b[90m 21 |\u001b[39m   }\n \u001b[90m 22 |\u001b[39m   \u001b[36masync\u001b[39m logout() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"profile-menu\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"logout-button\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 21,
+                            "line": 23
+                          },
+                          "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:23\n\n  21 |   }\n  22 |   async logout() {\n> 23 |     await this.page.click('[data-testid=\"profile-menu\"]');\n     |                     ^\n  24 |     await this.page.click('[data-testid=\"logout-button\"]');\n  25 |\n  26 |   }\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-10-31T14:10:24.386Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium-retry1/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 21,
+                        "line": 23
+                      }
+                    },
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 14310,
+                      "error": {
+                        "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
+                        "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18",
+                        "location": {
+                          "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                          "column": 21,
+                          "line": 23
+                        },
+                        "snippet": "   at ../pages/SignInPage.ts:23\n\n\u001b[0m \u001b[90m 21 |\u001b[39m   }\n \u001b[90m 22 |\u001b[39m   \u001b[36masync\u001b[39m logout() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"profile-menu\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'[data-testid=\"logout-button\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                            "column": 21,
+                            "line": 23
+                          },
+                          "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n\n   at ../pages/SignInPage.ts:23\n\n  21 |   }\n  22 |   async logout() {\n> 23 |     await this.page.click('[data-testid=\"profile-menu\"]');\n     |                     ^\n  24 |     await this.page.click('[data-testid=\"logout-button\"]');\n  25 |\n  26 |   }\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 2,
+                      "startTime": "2025-10-31T14:10:40.601Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium-retry2/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium-retry2/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/test-results/signIn-Sign-In-Tests-User--6ef73-cess-dashboard-after-logout-chromium-retry2/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts",
+                        "column": 21,
+                        "line": 23
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "02220b02503870c50f08-2ff6c325a0c045c46681",
+              "file": "signIn.test.ts",
+              "line": 54,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "signUp.test.ts",
+      "file": "signUp.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Sign Up Tests",
+          "file": "signUp.test.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User can register with valid details",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5555,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:10:55.601Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2edb56b6626688f32952-a86289f63c22f8cdc4f5",
+              "file": "signUp.test.ts",
+              "line": 12,
+              "column": 7
+            },
+            {
+              "title": "User cannot register with empty fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3410,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:11:01.246Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2edb56b6626688f32952-7d35160dfab0a3efd582",
+              "file": "signUp.test.ts",
+              "line": 19,
+              "column": 7
+            },
+            {
+              "title": "User cannot register with invalid email format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3477,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:11:04.669Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2edb56b6626688f32952-7c4aa3cd3eef4c9eaba0",
+              "file": "signUp.test.ts",
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "User cannot register with weak password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3545,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:11:08.161Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2edb56b6626688f32952-3ffcb8ec7d43426069f1",
+              "file": "signUp.test.ts",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "User cannot register with existing email",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3912,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:11:11.721Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2edb56b6626688f32952-4f83979c055669a907e6",
+              "file": "signUp.test.ts",
+              "line": 40,
+              "column": 7
+            },
+            {
+              "title": "User cannot register with missing name",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2994,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:11:15.648Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2edb56b6626688f32952-44aafed06d0283c69d29",
+              "file": "signUp.test.ts",
+              "line": 47,
+              "column": 7
+            },
+            {
+              "title": "Password visibility toggle works",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3140,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-31T14:11:18.656Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2edb56b6626688f32952-6609b01432f5b6773c09",
+              "file": "signUp.test.ts",
+              "line": 53,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-10-31T14:08:09.829Z",
+    "duration": 192019.54499999998,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}
