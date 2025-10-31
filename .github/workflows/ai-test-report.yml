@@ -4,23 +4,29 @@ on:
   workflow_dispatch:
   
 jobs:
-  run-tests:
+  e2e:
     runs-on: ubuntu-latest
-
+    container:
+      image: mcr.microsoft.com/playwright:v1.47.2-noble  # match your Playwright version
     steps:
-      - name: Checkout Playwright Project
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20', cache: 'npm' }
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      # expose the installed Playwright version for cache key
+      - name: Read Playwright version
+        id: pw
+        run: echo "PW_VERSION=$(node -p \"require('@playwright/test/package.json').version\")" >> $GITHUB_ENV
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
         with:
-          node-version: 18
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-pw-${{ env.PW_VERSION }}
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npx playwright test
 
       - name: Run Playwright Tests (HTML + JSON to file)
         run: |
