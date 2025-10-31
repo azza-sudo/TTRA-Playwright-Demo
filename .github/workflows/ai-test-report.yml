@@ -1,13 +1,13 @@
 name: AI Test Report Integration (Demo)
 
 on:
-  workflow_dispatch:
-
+    workflow_dispatch:
+    
 jobs:
   e2e:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.47.2-noble  # match your Playwright version
+      image: mcr.microsoft.com/playwright:v1.56.1-noble  # match @playwright/test
     steps:
       - uses: actions/checkout@v4
 
@@ -18,33 +18,35 @@ jobs:
 
       - run: npm ci
 
-      # Single test run that produces BOTH HTML and JSON
       - name: Run Playwright Tests (HTML + JSON)
         run: |
           mkdir -p playwright-report
-          # Playwright's JSON reporter prints to stdout; redirect it to file.
-          # HTML reporter writes files into playwright-report/.
-          npx playwright test --reporter=html,json > playwright-report/sample_results.json
+          npx playwright --version || true
+          # Run once; JSON goes to stdout so redirect it to a file.
+          npm test > playwright-report/sample_results.json || true
 
-          # Safety net if no tests ran / file missing
+          # Safety net if JSON missing/empty
           if [ ! -s playwright-report/sample_results.json ]; then
             echo '{"status":"no-tests-or-failure","suites":[]}' > playwright-report/sample_results.json
           fi
 
       - name: Upload Playwright JSON
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sample_results
           path: playwright-report/sample_results.json
 
       - name: Upload Playwright HTML
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: html-report
           path: playwright-report/
 
   ai-agent:
-    needs: e2e        # <-- fixed dependency
+    needs: e2e
+    if: ${{ always() }}  # run even if tests failed
     runs-on: ubuntu-latest
 
     steps:
