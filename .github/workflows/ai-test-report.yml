@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sample_results            # <<< keep this name
-          path: reports/sample_results.json
+          path: reports/
 
       - name: Commit JSON report to repo
         if: ${{ always() && github.event_name != 'pull_request' && startsWith(github.ref, 'refs/heads/') }}
