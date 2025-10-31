@@ -21,7 +21,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm reports
+      - run: npm ci
 
       - name: List discovered tests (sanity)
         run: npx playwright test --list || true
