@@ -68,16 +68,18 @@ jobs:
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout AI Agent Repository
+      # ✅ Checkout the AI agent repo into ./testinsight
+      - name: Checkout TestInsight Agent
         uses: actions/checkout@v4
         with:
-          repository: azza-sudo/TTRA-Playwright-Demo
-          path: reports
+          repository: azza-sudo/TestInsight-Agent   # <-- your agent repo
+          path: testinsight
 
+      # ✅ Pull the JSON artifact into ./reports
       - name: Download Test Results
         uses: actions/download-artifact@v4
         with:
-          name: sample_results                 
+          name: sample_results
           path: reports
 
       - name: Setup Python
@@ -86,22 +88,22 @@ jobs:
           python-version: '3.10'
 
       - name: Install AI Agent Dependencies
-        working-directory: testinsight
+        working-directory: ${{ github.workspace }}/testinsight
         run: pip install -r requirements.txt
 
       - name: Run AI Analysis
-        working-directory: testinsight
+        working-directory: ${{ github.workspace }}/testinsight
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           TESTINSIGHT_DISABLE_AI: 1
         run: |
           echo "Running TestInsight AI Agent..."
-          python main.py sample_results.json      # << pass the correct filename
+          python main.py "${{ github.workspace }}/reports/sample_results.json"
 
       - name: Upload AI Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ai-report
-          path: testinsight/ai_report.json
+          path: ${{ github.workspace }}/testinsight/ai_report.json
