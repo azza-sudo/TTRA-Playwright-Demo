@@ -12,9 +12,9 @@
     "maxFailures": 0,
     "metadata": {
       "ci": {
-        "commitHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/commit/6580189ff2aad8f7f13302fc8f22408d985b8e42",
-        "commitHash": "6580189ff2aad8f7f13302fc8f22408d985b8e42",
-        "buildHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/actions/runs/19003141720"
+        "commitHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/commit/cc50d94ceb3568d66fca67c346f09a47ccda423f",
+        "commitHash": "cc50d94ceb3568d66fca67c346f09a47ccda423f",
+        "buildHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/actions/runs/19003189125"
       },
       "actualWorkers": 1
     },
@@ -50,9 +50,9 @@
         "retries": 2,
         "metadata": {
           "ci": {
-            "commitHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/commit/6580189ff2aad8f7f13302fc8f22408d985b8e42",
-            "commitHash": "6580189ff2aad8f7f13302fc8f22408d985b8e42",
-            "buildHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/actions/runs/19003141720"
+            "commitHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/commit/cc50d94ceb3568d66fca67c346f09a47ccda423f",
+            "commitHash": "cc50d94ceb3568d66fca67c346f09a47ccda423f",
+            "buildHref": "https://github.com/azza-sudo/TTRA-Playwright-Demo/actions/runs/19003189125"
           },
           "actualWorkers": 1
         },
@@ -103,12 +103,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3971,
+                      "duration": 4322,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:52:49.564Z",
+                      "startTime": "2025-11-01T21:59:00.153Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -137,12 +137,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3358,
+                      "duration": 3852,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:52:53.685Z",
+                      "startTime": "2025-11-01T21:59:04.641Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -171,12 +171,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2727,
+                      "duration": 3677,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:52:57.061Z",
+                      "startTime": "2025-11-01T21:59:08.514Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -205,7 +205,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 8115,
+                      "duration": 8911,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20",
@@ -229,7 +229,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:52:59.800Z",
+                      "startTime": "2025-11-01T21:59:12.207Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -258,7 +258,7 @@
                       "workerIndex": 1,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 8135,
+                      "duration": 8572,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20",
@@ -282,7 +282,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2025-11-01T21:53:08.507Z",
+                      "startTime": "2025-11-01T21:59:21.734Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -316,7 +316,7 @@
                       "workerIndex": 2,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 7687,
+                      "duration": 8233,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"كلمة المرور مطلوبة\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:31:20",
@@ -340,7 +340,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2025-11-01T21:53:17.778Z",
+                      "startTime": "2025-11-01T21:59:31.450Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -390,7 +390,7 @@
                       "workerIndex": 3,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 8326,
+                      "duration": 8363,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20",
@@ -414,7 +414,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:53:26.133Z",
+                      "startTime": "2025-11-01T21:59:40.358Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -443,7 +443,7 @@
                       "workerIndex": 4,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 7995,
+                      "duration": 8593,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20",
@@ -467,7 +467,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2025-11-01T21:53:35.128Z",
+                      "startTime": "2025-11-01T21:59:49.405Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -501,7 +501,7 @@
                       "workerIndex": 5,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 7705,
+                      "duration": 8241,
                       "error": {
                         "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
                         "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected substring: \u001b[32m\"البريد الإلكتروني مطلوب\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at SignInPage.assertFieldValidation (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:50:54)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:38:20",
@@ -525,7 +525,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2025-11-01T21:53:44.271Z",
+                      "startTime": "2025-11-01T21:59:59.173Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -575,12 +575,12 @@
                       "workerIndex": 6,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2414,
+                      "duration": 3352,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:53:52.641Z",
+                      "startTime": "2025-11-01T22:00:08.100Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -609,7 +609,7 @@
                       "workerIndex": 6,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 13485,
+                      "duration": 15080,
                       "error": {
                         "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
                         "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18",
@@ -633,7 +633,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:53:55.150Z",
+                      "startTime": "2025-11-01T22:00:11.548Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -662,7 +662,7 @@
                       "workerIndex": 7,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 13869,
+                      "duration": 14743,
                       "error": {
                         "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
                         "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18",
@@ -686,7 +686,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2025-11-01T21:54:09.230Z",
+                      "startTime": "2025-11-01T22:00:27.224Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -720,7 +720,7 @@
                       "workerIndex": 8,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 13599,
+                      "duration": 14412,
                       "error": {
                         "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
                         "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:49:18",
@@ -744,7 +744,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2025-11-01T21:54:24.313Z",
+                      "startTime": "2025-11-01T22:00:43.181Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -794,7 +794,7 @@
                       "workerIndex": 9,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 13971,
+                      "duration": 14192,
                       "error": {
                         "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
                         "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18",
@@ -818,7 +818,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:54:38.596Z",
+                      "startTime": "2025-11-01T22:00:58.278Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -847,7 +847,7 @@
                       "workerIndex": 10,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 14118,
+                      "duration": 14992,
                       "error": {
                         "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
                         "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18",
@@ -871,7 +871,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 1,
-                      "startTime": "2025-11-01T21:54:53.242Z",
+                      "startTime": "2025-11-01T22:01:13.150Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -905,7 +905,7 @@
                       "workerIndex": 11,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 13910,
+                      "duration": 14466,
                       "error": {
                         "message": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n",
                         "stack": "TimeoutError: page.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"profile-menu\"]')\u001b[22m\n\n    at SignInPage.logout (/__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/pages/SignInPage.ts:23:21)\n    at /__w/TTRA-Playwright-Demo/TTRA-Playwright-Demo/tests/signIn.test.ts:57:18",
@@ -929,7 +929,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 2,
-                      "startTime": "2025-11-01T21:55:08.562Z",
+                      "startTime": "2025-11-01T22:01:29.355Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -996,12 +996,12 @@
                       "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4091,
+                      "duration": 4902,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:55:23.139Z",
+                      "startTime": "2025-11-01T22:01:44.513Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1030,12 +1030,12 @@
                       "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2814,
+                      "duration": 3123,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:55:27.318Z",
+                      "startTime": "2025-11-01T22:01:49.507Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1064,12 +1064,12 @@
                       "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3085,
+                      "duration": 4121,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:55:30.147Z",
+                      "startTime": "2025-11-01T22:01:52.643Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1098,12 +1098,12 @@
                       "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2895,
+                      "duration": 3171,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:55:33.246Z",
+                      "startTime": "2025-11-01T22:01:56.775Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1132,12 +1132,12 @@
                       "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3294,
+                      "duration": 3799,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:55:36.154Z",
+                      "startTime": "2025-11-01T22:01:59.960Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1166,12 +1166,12 @@
                       "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2968,
+                      "duration": 3127,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:55:39.462Z",
+                      "startTime": "2025-11-01T22:02:03.773Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1200,12 +1200,12 @@
                       "workerIndex": 12,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2542,
+                      "duration": 3253,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-11-01T21:55:42.444Z",
+                      "startTime": "2025-11-01T22:02:06.927Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1225,8 +1225,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-11-01T21:52:48.994Z",
-    "duration": 176050.88900000002,
+    "startTime": "2025-11-01T21:58:59.522Z",
+    "duration": 190708.878,
     "expected": 11,
     "skipped": 0,
     "unexpected": 4,
