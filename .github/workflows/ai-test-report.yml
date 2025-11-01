@@ -99,6 +99,11 @@ jobs:
           REPORT_PATH: ${{ github.workspace }}/artifacts/sample_results.json
           PYTHONUNBUFFERED: "1"
           STRICT_FAILS: "false"     # set "true" to fail the job on test failures
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_PROJECT_KEY: ${{ secrets.JIRA_PROJECT_KEY }}
         run: |
           set -euxo pipefail
           echo "Using report: $REPORT_PATH"
